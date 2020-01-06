@@ -73,17 +73,108 @@ function hasPairWithSum1(a1, s) {
 //////////////////////////
 function hasPairWithSum2(arr, sum) {
   const mySet = new Set();
-  for(let i=0; i<arr.length; i++) {
-    if(mySet.has(arr[i])) {
+  for (let i = 0; i < arr.length; i++) {
+    if (mySet.has(arr[i])) {
       return true;
     }
-    const comp = sum-arr[i];
+    const comp = sum - arr[i];
     mySet.add(comp)
   }
   return false;
 }
-console.log(hasPairWithSum2(a1, sum1), hasPairWithSum2(a2, sum2));
+//console.log(hasPairWithSum2(a1, sum1), hasPairWithSum2(a2, sum2));
 
 //////////////////////////
 
+//implement Array data structure
+
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    return this.data[index];
+  }
+
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+  }
+
+  pop() {
+    const item = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return item;
+  }
+
+  peek(index) {
+    return get(index);
+  }
+
+  //[2, 5, 7, 10] insert(1, 55)
+
+  insert(index, item) {
+    //check the input for underflow/overflow
+    if (index < 0) {
+      index = 0;
+    }
+
+    //check if the index to insert is equal or more than the array length, if so push at the end
+    if (index >= this.length - 1) {
+      this.push(item);
+      return this;
+    }
+
+    for (let i = this.length - 1; i >= index; i--) {
+      this.data[i + 1] = this.data[i];
+    }
+    this.data[index] = item;
+    this.length++;
+    return this;
+  }
+
+  //[2,5,7,10] delete 5 (from index 1)
+  delete(index) {
+    //check the input for underflow/overflow
+    if (index < 0) {
+      index = 0;
+    }
+
+    //check if the index to delete is equal or more than the array length, if so pop from the end
+    if (index >= this.length - 1) {
+      return this.pop();
+    }
+
+    const deletedItem = this.data[index];
+    for (let i = index; i < this.length - 1; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+    return deletedItem;
+  }
+}
+
+const customArr = new MyArray();
+customArr.push(2);
+customArr.push(5);
+customArr.push(7);
+customArr.push(10);
+console.log(customArr);
+customArr.insert(1, 55);
+console.log(customArr);
+customArr.insert(10, 25);
+console.log(customArr);
+customArr.delete(1);
+console.log(customArr);
+customArr.delete(-101);
+console.log(customArr);
+customArr.delete(101);
+console.log(customArr);
 //////////////////////////
