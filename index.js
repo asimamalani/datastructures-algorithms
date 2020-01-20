@@ -161,20 +161,26 @@ class MyArray {
   }
 }
 
-const customArr = new MyArray();
-customArr.push(2);
-customArr.push(5);
-customArr.push(7);
-customArr.push(10);
-console.log(customArr);
-customArr.insert(1, 55);
-console.log(customArr);
-customArr.insert(10, 25);
-console.log(customArr);
-customArr.delete(1);
-console.log(customArr);
-customArr.delete(-101);
-console.log(customArr);
-customArr.delete(101);
-console.log(customArr);
+// const customArr = new MyArray();
+// customArr.push(2);
+// customArr.push(5);
+// customArr.push(7);
+// customArr.push(10);
+// console.log(customArr);
+// customArr.insert(1, 55);
+// console.log(customArr);
+// customArr.insert(10, 25);
+// console.log(customArr);
+// customArr.delete(1);
+// console.log(customArr);
+// customArr.delete(-101);
+// console.log(customArr);
+// customArr.delete(101);
+// console.log(customArr);
 //////////////////////////
+
+//LinkedList using HashMap
+
+class LinkedList {
+  constructor()
+}
