@@ -268,15 +268,33 @@ class LinkedList {
     this.length--;
     return this.print();
   }
+
+  reverse() {
+    //[ 89, 20, 10, 3, 6 ]
+    //[ 6, 3, 10, 20, 89 ]
+    let first = this.head;
+    this.tail = first;
+    let second = first.next;
+    while(second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this.print();
+  }
 }
-// const singleLL = new LinkedList(20);
-// singleLL.print();
-// singleLL.append(2);
-// singleLL.append(3);
-// singleLL.append(6);
-// singleLL.prepend(89);
-// singleLL.insert(3, 10);
-// singleLL.remove(2);
+const singleLL = new LinkedList(20);
+singleLL.print();
+singleLL.append(2);
+singleLL.append(3);
+singleLL.append(6);
+singleLL.prepend(89);
+singleLL.insert(3, 10);
+singleLL.remove(2);
+singleLL.reverse();
 
 //////////////////////////
 
@@ -397,12 +415,12 @@ class DoublyLinkedList {
     return this.print();
   }
 }
-const doublyLL = new DoublyLinkedList(20);
-doublyLL.print();
-doublyLL.append(2);
-doublyLL.append(3);
-doublyLL.append(6);
-doublyLL.prepend(89);
-doublyLL.insert(3, 10);
-doublyLL.remove(2);
-doublyLL;
+// const doublyLL = new DoublyLinkedList(20);
+// doublyLL.print();
+// doublyLL.append(2);
+// doublyLL.append(3);
+// doublyLL.append(6);
+// doublyLL.prepend(89);
+// doublyLL.insert(3, 10);
+// doublyLL.remove(2);
+// doublyLL;
