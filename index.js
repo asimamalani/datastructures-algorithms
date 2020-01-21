@@ -254,10 +254,32 @@ class LinkedList {
     return currentNode;
   }
 }
-const singleLL = new LinkedList(20);
-singleLL.print();
-singleLL.append(2);
-singleLL.append(3);
-singleLL.append(6);
-singleLL.prepend(89);
-singleLL.insert(3, 10);
+// const singleLL = new LinkedList(20);
+// singleLL.print();
+// singleLL.append(2);
+// singleLL.append(3);
+// singleLL.append(6);
+// singleLL.prepend(89);
+// singleLL.insert(3, 10);
+
+//////////////////////////
+
+// First recurring number in an array
+// Optimized solution using a Map or a Set
+
+function firstRecurringItemInAnArray(nums) {
+  if(!nums || nums.length < 2) {
+    throw "not enough items in an input array";
+  }
+
+  const mapSet = new Set();
+  for(let i=0; i< nums.length; i++) {
+    if(mapSet.has(nums[i])) {
+      return nums[i];
+    }
+    mapSet.add(nums[i]);
+  }
+  throw "no recurring items in an input array";
+}
+
+firstRecurringItemInAnArray([]);
