@@ -181,6 +181,83 @@ class MyArray {
 
 //LinkedList using HashMap
 
-class LinkedList {
-  constructor()
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
+
+class LinkedList {
+  constructor(value) {
+    const newNode = new Node(value);
+    this.head = newNode;
+    this.tail = newNode;
+    this.length = 1;
+  }
+
+  print() {
+    const list = [];
+    let currentNode = this.head;
+    while(currentNode) {
+      list.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return list;
+  }
+
+  append(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this.print();
+  }
+
+  prepend(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this.print();
+  }
+
+  insert(index, value) {
+    if(index <= 0) {
+      return this.prepend(value);
+    }
+    if(index >= this.length) {
+      return this.append(value);
+    }
+    const newNode = new Node(value);
+    const leader = this.traverseIndex(index-1);
+    const follower = leader.next;
+    leader.next = newNode;
+    newNode.next = follower;
+    this.length++;
+    return this.print();
+  }
+
+  traverseIndex(index) {
+    if(index <= 0) {
+      return this.head;
+    }
+    if(index >= this.length - 1) {
+      return this.tail;
+    }
+    let currentNode = this.head;
+    let counter = 0;
+    while(counter < index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+}
+const singleLL = new LinkedList(20);
+singleLL.print();
+singleLL.append(2);
+singleLL.append(3);
+singleLL.append(6);
+singleLL.prepend(89);
+singleLL.insert(3, 10);
