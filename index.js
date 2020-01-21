@@ -269,14 +269,14 @@ class LinkedList {
     return this.print();
   }
 }
-const singleLL = new LinkedList(20);
-singleLL.print();
-singleLL.append(2);
-singleLL.append(3);
-singleLL.append(6);
-singleLL.prepend(89);
-singleLL.insert(3, 10);
-singleLL.remove(2);
+// const singleLL = new LinkedList(20);
+// singleLL.print();
+// singleLL.append(2);
+// singleLL.append(3);
+// singleLL.append(6);
+// singleLL.prepend(89);
+// singleLL.insert(3, 10);
+// singleLL.remove(2);
 
 //////////////////////////
 
@@ -299,3 +299,110 @@ function firstRecurringItemInAnArray(nums) {
 }
 
 //firstRecurringItemInAnArray([]);
+
+//DoublyLinkedList using HashMap
+
+class DNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+class DoublyLinkedList {
+  constructor(value) {
+    const newNode = new DNode(value);
+    this.head = newNode;
+    this.tail = newNode;
+    this.length = 1;
+  }
+
+  print() {
+    const list = [];
+    let currentNode = this.head;
+    while(currentNode) {
+      list.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return list;
+  }
+
+  append(value) {
+    const newNode = new DNode(value);
+    newNode.prev = this.tail;
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this.print();
+  }
+
+  prepend(value) {
+    const newNode = new DNode(value);
+    newNode.next = this.head;
+    this.head.prev = newNode;
+    this.head = newNode;
+    this.length++;
+    return this.print();
+  }
+
+  insert(index, value) {
+    if(index <= 0) {
+      return this.prepend(value);
+    }
+    if(index >= this.length) {
+      return this.append(value);
+    }
+    const newNode = new DNode(value);
+    const leader = this.traverseIndex(index-1);
+    const follower = leader.next;
+    leader.next = newNode;
+    newNode.prev = leader;
+    newNode.next = follower;
+    follower.prev = newNode;
+    this.length++;
+    return this.print();
+  }
+
+  traverseIndex(index) {
+    if(index <= 0) {
+      return this.head;
+    }
+    if(index >= this.length - 1) {
+      return this.tail;
+    }
+    let currentNode = this.head;
+    let counter = 0;
+    while(counter < index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+
+  remove(index) {
+    if(index <= 0) {
+      this.head = this.head.next;
+      this.head.prev = null;
+      this.length--;
+      return this.print();
+    }
+    const leader = this.traverseIndex(index-1);
+    let unwantedNode = leader.next;
+    const follower = unwantedNode.next;
+    leader.next = follower;
+    follower.prev = leader;
+    unwantedNode = null;
+    this.length--;
+    return this.print();
+  }
+}
+const doublyLL = new DoublyLinkedList(20);
+doublyLL.print();
+doublyLL.append(2);
+doublyLL.append(3);
+doublyLL.append(6);
+doublyLL.prepend(89);
+doublyLL.insert(3, 10);
+doublyLL.remove(2);
+doublyLL;
