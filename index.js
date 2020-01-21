@@ -253,14 +253,30 @@ class LinkedList {
     }
     return currentNode;
   }
+
+  remove(index) {
+    if(index <= 0) {
+      this.head = this.head.next;
+      this.length--;
+      return this.print();
+    }
+    const leader = this.traverseIndex(index-1);
+    let unwantedNode = leader.next;
+    const follower = unwantedNode.next;
+    leader.next = follower;
+    unwantedNode = null;
+    this.length--;
+    return this.print();
+  }
 }
-// const singleLL = new LinkedList(20);
-// singleLL.print();
-// singleLL.append(2);
-// singleLL.append(3);
-// singleLL.append(6);
-// singleLL.prepend(89);
-// singleLL.insert(3, 10);
+const singleLL = new LinkedList(20);
+singleLL.print();
+singleLL.append(2);
+singleLL.append(3);
+singleLL.append(6);
+singleLL.prepend(89);
+singleLL.insert(3, 10);
+singleLL.remove(2);
 
 //////////////////////////
 
@@ -282,4 +298,4 @@ function firstRecurringItemInAnArray(nums) {
   throw "no recurring items in an input array";
 }
 
-firstRecurringItemInAnArray([]);
+//firstRecurringItemInAnArray([]);
