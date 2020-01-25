@@ -286,15 +286,15 @@ class LinkedList {
     return this.print();
   }
 }
-const singleLL = new LinkedList(20);
-singleLL.print();
-singleLL.append(2);
-singleLL.append(3);
-singleLL.append(6);
-singleLL.prepend(89);
-singleLL.insert(3, 10);
-singleLL.remove(2);
-singleLL.reverse();
+// const singleLL = new LinkedList(20);
+// singleLL.print();
+// singleLL.append(2);
+// singleLL.append(3);
+// singleLL.append(6);
+// singleLL.prepend(89);
+// singleLL.insert(3, 10);
+// singleLL.remove(2);
+// singleLL.reverse();
 
 //////////////////////////
 
@@ -424,3 +424,85 @@ class DoublyLinkedList {
 // doublyLL.insert(3, 10);
 // doublyLL.remove(2);
 // doublyLL;
+
+////////////////////////////////
+
+// Implement Stack using an array
+class StackArr {
+  constructor() {
+    this.array = [];
+  }
+  push(value) {
+    this.array.push(value);
+    return this;
+  }
+  peek() {
+    return this.array[this.array.length-1];
+  }
+  pop() {
+    return this.array.pop();
+  }
+}
+
+// const myStackArr = new StackArr();
+// myStackArr.push('google');
+// myStackArr.push('microsoft');
+// myStackArr.push('linkedin');
+// myStackArr.peek();
+// myStackArr.pop();
+// myStackArr.peek();
+// myStackArr.pop();
+// myStackArr.pop();
+// myStackArr.pop();
+// myStackArr.peek();
+
+
+// Implement Stack using LinkedList
+
+class StackLL {
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    if(this.length === 0) {
+      this.top = newNode;
+      this.bottom = newNode;
+    } else {
+      const holdingPointer = this.top;
+      this.top = newNode;
+      this.top.next = holdingPointer;
+    }
+    this.length++;
+    return this;
+  }
+  peek() {
+    return this.top;
+  }
+  pop() {
+    if(this.length === 0) {
+      return null;
+    }
+    const holdingPointer = this.top;
+    this.top = this.top.next;
+    this.length--;
+    if(this.length === 0) {
+      this.bottom = null;
+    }
+    return holdingPointer;
+  }
+}
+
+// const myStackLL = new StackLL();
+// myStackLL.push('google');
+// myStackLL.push('microsoft');
+// myStackLL.push('linkedin');
+// myStackLL.peek();
+// myStackLL.pop();
+// myStackLL.peek();
+// myStackLL.pop();
+// myStackLL.pop();
+// myStackLL.pop();
+// myStackLL.peek();
