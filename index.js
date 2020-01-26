@@ -590,3 +590,39 @@ function factorialIterative(value) {
   return fact;
 }
 //factorialIterative(20);
+
+//////////////////////////
+
+// Fibonacci Sequence Recursive
+// 0 1 1 2 3 5 8 13
+function fib(n) {
+  if(n < 2) {
+    return n;
+  }
+  return fib(n-1) + fib(n-2);
+}
+//fib(7);
+
+//Implement a function that reverses a string...and then recursion!
+function reverseString(str) {
+  helper(str, 0, str.length-1);
+  return str;
+}
+
+function helper(str, left, right) {
+  if(left >= right) return;
+  if(str[left] !== str[right]) {
+    let tmp = str[left];
+    str[left] = str[right];
+    str[right] = tmp;
+  }
+  return helper(str, ++left, --right);
+}
+
+//reverseString('yoyo');
+
+function stringReverseRecursion(str) {
+  if(str === "") return str;
+  return stringReverseRecursion(str.substring(1)) + str.charAt(0);
+}
+stringReverseRecursion("my name is asim");
