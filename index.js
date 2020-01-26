@@ -557,3 +557,36 @@ class Queue {
 // myQueue.dequeue();
 // myQueue.peek();
 // myQueue.dequeue();
+
+//////////////////////
+
+// Factorial Recursion
+function factorialRecursion(value) {
+  console.log('input: ', value);
+  if(value < 1) {
+    return 0;
+  }
+  if(value == 1) {
+    return 1;
+  }
+  return value * factorialRecursion(value-1);
+}
+//factorialRecursion(20);
+
+// Factorial Iterative
+function factorialIterative(value) {
+  console.log('input: ', value);
+  if(value < 1) {
+    return 0;
+  }
+  if(value == 1) {
+    return 1;
+  }
+  let fact = 1;
+  while(value > 1) {
+    fact *= value--;
+    console.log('fact: ', fact);
+  }
+  return fact;
+}
+//factorialIterative(20);
