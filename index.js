@@ -694,18 +694,14 @@ function traverse(node) {
   return tree;
 }
 
-// const tree = new BinarySearchTree();
-// tree.insert(9);
-// tree.insert(4);
-// tree.insert(6);
-// tree.insert(20);
-// tree.insert(170);
-// tree.insert(15);
-// tree.insert(1);
-// JSON.stringify(traverse(tree.root));
-// tree.lookup(20);
-
-//sort array descending order
-arr = [ 82.11742562118049, 28.86823689842918, 49.61295450928224, 5.861613903793295 ];
-arr.sort((a, b) => { return b - a; });
+const tree = new BinarySearchTree();
+tree.insert(9);
+tree.insert(4);
+tree.insert(6);
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
+tree.insert(1);
+JSON.stringify(traverse(tree.root));
+tree.lookup(20);
 
