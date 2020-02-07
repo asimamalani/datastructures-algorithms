@@ -199,7 +199,7 @@ class LinkedList {
   print() {
     const list = [];
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       list.push(currentNode.value);
       currentNode = currentNode.next;
     }
@@ -223,14 +223,14 @@ class LinkedList {
   }
 
   insert(index, value) {
-    if(index <= 0) {
+    if (index <= 0) {
       return this.prepend(value);
     }
-    if(index >= this.length) {
+    if (index >= this.length) {
       return this.append(value);
     }
     const newNode = new Node(value);
-    const leader = this.traverseIndex(index-1);
+    const leader = this.traverseIndex(index - 1);
     const follower = leader.next;
     leader.next = newNode;
     newNode.next = follower;
@@ -239,15 +239,15 @@ class LinkedList {
   }
 
   traverseIndex(index) {
-    if(index <= 0) {
+    if (index <= 0) {
       return this.head;
     }
-    if(index >= this.length - 1) {
+    if (index >= this.length - 1) {
       return this.tail;
     }
     let currentNode = this.head;
     let counter = 0;
-    while(counter < index) {
+    while (counter < index) {
       currentNode = currentNode.next;
       counter++;
     }
@@ -255,12 +255,12 @@ class LinkedList {
   }
 
   remove(index) {
-    if(index <= 0) {
+    if (index <= 0) {
       this.head = this.head.next;
       this.length--;
       return this.print();
     }
-    const leader = this.traverseIndex(index-1);
+    const leader = this.traverseIndex(index - 1);
     let unwantedNode = leader.next;
     const follower = unwantedNode.next;
     leader.next = follower;
@@ -275,7 +275,7 @@ class LinkedList {
     let first = this.head;
     this.tail = first;
     let second = first.next;
-    while(second) {
+    while (second) {
       let temp = second.next;
       second.next = first;
       first = second;
@@ -302,13 +302,13 @@ class LinkedList {
 // Optimized solution using a Map or a Set
 
 function firstRecurringItemInAnArray(nums) {
-  if(!nums || nums.length < 2) {
+  if (!nums || nums.length < 2) {
     throw "not enough items in an input array";
   }
 
   const mapSet = new Set();
-  for(let i=0; i< nums.length; i++) {
-    if(mapSet.has(nums[i])) {
+  for (let i = 0; i < nums.length; i++) {
+    if (mapSet.has(nums[i])) {
       return nums[i];
     }
     mapSet.add(nums[i]);
@@ -339,7 +339,7 @@ class DoublyLinkedList {
   print() {
     const list = [];
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       list.push(currentNode.value);
       currentNode = currentNode.next;
     }
@@ -365,14 +365,14 @@ class DoublyLinkedList {
   }
 
   insert(index, value) {
-    if(index <= 0) {
+    if (index <= 0) {
       return this.prepend(value);
     }
-    if(index >= this.length) {
+    if (index >= this.length) {
       return this.append(value);
     }
     const newNode = new DNode(value);
-    const leader = this.traverseIndex(index-1);
+    const leader = this.traverseIndex(index - 1);
     const follower = leader.next;
     leader.next = newNode;
     newNode.prev = leader;
@@ -383,15 +383,15 @@ class DoublyLinkedList {
   }
 
   traverseIndex(index) {
-    if(index <= 0) {
+    if (index <= 0) {
       return this.head;
     }
-    if(index >= this.length - 1) {
+    if (index >= this.length - 1) {
       return this.tail;
     }
     let currentNode = this.head;
     let counter = 0;
-    while(counter < index) {
+    while (counter < index) {
       currentNode = currentNode.next;
       counter++;
     }
@@ -399,13 +399,13 @@ class DoublyLinkedList {
   }
 
   remove(index) {
-    if(index <= 0) {
+    if (index <= 0) {
       this.head = this.head.next;
       this.head.prev = null;
       this.length--;
       return this.print();
     }
-    const leader = this.traverseIndex(index-1);
+    const leader = this.traverseIndex(index - 1);
     let unwantedNode = leader.next;
     const follower = unwantedNode.next;
     leader.next = follower;
@@ -437,7 +437,7 @@ class StackArr {
     return this;
   }
   peek() {
-    return this.array[this.array.length-1];
+    return this.array[this.array.length - 1];
   }
   pop() {
     return this.array.pop();
@@ -467,7 +467,7 @@ class StackLL {
   }
   push(value) {
     const newNode = new Node(value);
-    if(this.length === 0) {
+    if (this.length === 0) {
       this.top = newNode;
       this.bottom = newNode;
     } else {
@@ -482,13 +482,13 @@ class StackLL {
     return this.top;
   }
   pop() {
-    if(this.length === 0) {
+    if (this.length === 0) {
       return null;
     }
     const holdingPointer = this.top;
     this.top = this.top.next;
     this.length--;
-    if(this.length === 0) {
+    if (this.length === 0) {
       this.bottom = null;
     }
     return holdingPointer;
@@ -519,7 +519,7 @@ class Queue {
   }
   enqueue(value) {
     const newNode = new Node(value);
-    if(this.length === 0) {
+    if (this.length === 0) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -533,13 +533,13 @@ class Queue {
     return this.first;
   }
   dequeue() {
-    if(this.length === 0) {
+    if (this.length === 0) {
       return null;
     }
     const holdingPointer = this.first;
     this.first = this.first.next;
     this.length--;
-    if(this.length === 0) {
+    if (this.length === 0) {
       this.last = null;
     }
     return holdingPointer;
@@ -563,27 +563,27 @@ class Queue {
 // Factorial Recursion
 function factorialRecursion(value) {
   console.log('input: ', value);
-  if(value < 1) {
+  if (value < 1) {
     return 0;
   }
-  if(value == 1) {
+  if (value == 1) {
     return 1;
   }
-  return value * factorialRecursion(value-1);
+  return value * factorialRecursion(value - 1);
 }
 //factorialRecursion(20);
 
 // Factorial Iterative
 function factorialIterative(value) {
   console.log('input: ', value);
-  if(value < 1) {
+  if (value < 1) {
     return 0;
   }
-  if(value == 1) {
+  if (value == 1) {
     return 1;
   }
   let fact = 1;
-  while(value > 1) {
+  while (value > 1) {
     fact *= value--;
     console.log('fact: ', fact);
   }
@@ -596,22 +596,22 @@ function factorialIterative(value) {
 // Fibonacci Sequence Recursive
 // 0 1 1 2 3 5 8 13
 function fib(n) {
-  if(n < 2) {
+  if (n < 2) {
     return n;
   }
-  return fib(n-1) + fib(n-2);
+  return fib(n - 1) + fib(n - 2);
 }
 //fib(7);
 
 //Implement a function that reverses a string...and then recursion!
 function reverseString(str) {
-  helper(str, 0, str.length-1);
+  helper(str, 0, str.length - 1);
   return str;
 }
 
 function helper(str, left, right) {
-  if(left >= right) return;
-  if(str[left] !== str[right]) {
+  if (left >= right) return;
+  if (str[left] !== str[right]) {
     let tmp = str[left];
     str[left] = str[right];
     str[right] = tmp;
@@ -622,7 +622,7 @@ function helper(str, left, right) {
 //reverseString('yoyo');
 
 function stringReverseRecursion(str) {
-  if(str === "") return str;
+  if (str === "") return str;
   return stringReverseRecursion(str.substring(1)) + str.charAt(0);
 }
 //stringReverseRecursion("my name is asim");
@@ -649,20 +649,20 @@ class BinarySearchTree {
 
   insert(value) {
     const newNode = new BSTNode(value);
-    if(!this.root) {
+    if (!this.root) {
       this.root = newNode;
       return this;
     }
     let currentNode = this.root;
-    while(true) {
-      if(value < currentNode.value) {
-        if(!currentNode.left) {
+    while (true) {
+      if (value < currentNode.value) {
+        if (!currentNode.left) {
           currentNode.left = newNode;
           return this;
         }
         currentNode = currentNode.left;
       } else {
-        if(!currentNode.right) {
+        if (!currentNode.right) {
           currentNode.right = newNode;
           return this;
         }
@@ -672,10 +672,10 @@ class BinarySearchTree {
   }
 
   lookup(value) {
-    if(!this.root) return null;
+    if (!this.root) return null;
     let currentNode = this.root;
-    while(currentNode) {
-      if(value === currentNode.value) {
+    while (currentNode) {
+      if (value === currentNode.value) {
         return currentNode;
       } else if (value < currentNode.value) {
         currentNode = currentNode.left;
@@ -694,14 +694,66 @@ function traverse(node) {
   return tree;
 }
 
-const tree = new BinarySearchTree();
-tree.insert(9);
-tree.insert(4);
-tree.insert(6);
-tree.insert(20);
-tree.insert(170);
-tree.insert(15);
-tree.insert(1);
-JSON.stringify(traverse(tree.root));
-tree.lookup(20);
+// const tree = new BinarySearchTree();
+// tree.insert(9);
+// tree.insert(4);
+// tree.insert(6);
+// tree.insert(20);
+// tree.insert(170);
+// tree.insert(15);
+// tree.insert(1);
+// JSON.stringify(traverse(tree.root));
+// tree.lookup(20);
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+  if (!s || s.trim() === "") {
+    return 0;
+  }
+  s = s.trim().toLocaleUpperCase();
+  const mapRoman = {};
+  mapRoman["I"] = 1;
+  mapRoman["V"] = 5;
+  mapRoman["X"] = 10;
+  mapRoman["L"] = 50;
+  mapRoman["C"] = 100;
+  mapRoman["D"] = 500;
+  mapRoman["M"] = 1000;
+
+  if (s.length === 1) {
+    if (mapRoman[s.charAt(0)] !== undefined) {
+      return mapRoman[s.charAt(0)];
+    } else {
+      return 0;
+    }
+  }
+
+  const mapSpecial = {};
+  mapSpecial["IV"] = 4;
+  mapSpecial["IX"] = 9;
+  mapSpecial["XL"] = 40;
+  mapSpecial["XC"] = 90;
+  mapSpecial["CD"] = 400;
+  mapSpecial["CM"] = 900;
+
+  let i = 0;
+  let sum = 0;
+  while (i < s.length) {
+    if (mapSpecial[s.substr(i, 2)] !== undefined) {
+      sum += mapSpecial[s.substr(i, 2)];
+      i += 2;
+    } else if (mapRoman[s.charAt(i)] !== undefined) {
+      sum += mapRoman[s.charAt(i)];
+      i += 1;
+    }
+  }
+  return sum;
+};
+//romanToInt("IV");
